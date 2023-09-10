@@ -1,0 +1,40 @@
+def calculate_net_pay(gross_pay, tax_rate):
+net_pay = gross_pay * (1 - tax_rate)
+return net_pay
+
+print("Employee Pay Calculator")
+print("Input 1 for hourly employee or 2 for piece employee:")
+
+employee_type = input()
+
+if employee_type == '1':
+hours_worked = float(input("Enter hours worked: "))
+rate = float(input("Enter rate per hour: "))
+
+if hours_worked > 40:
+regular_hours = 40
+overtime_hours = hours_worked - 40
+regular_pay = regular_hours * rate
+overtime_pay = overtime_hours * (1.5 * rate)
+gross_pay = regular_pay + overtime_pay
+print(f"Overtime: ${overtime_pay:.2f}")
+else:
+gross_pay = hours_worked * rate
+
+tax_rate = 0.3
+net_pay = calculate_net_pay(gross_pay, tax_rate)
+
+print(f"Gross: ${gross_pay:.2f}")
+print(f"Net: ${net_pay:.2f}")
+
+elif employee_type == '2':
+pieces_made = int(input("Enter number of pieces made: "))
+rate_per_piece = float(input("Enter rate per piece: "))
+
+gross_pay = pieces_made * rate_per_piece
+
+tax_rate = 0.3
+net_pay = calculate_net_pay(gross_pay, tax_rate)
+
+print(f"Gross: ${gross_pay:.2f}")
+print(f"Net: ${net_pay:.2f}")
